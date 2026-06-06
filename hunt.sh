@@ -51,5 +51,5 @@ echo "SUCCESS instance=$ID ip=$IP"
 
 if [ -n "${DISCORD_WEBHOOK:-}" ]; then
   MSG="🎉 오라클 무료 서버 잡혔어! 공용 IP: ${IP} — 클로드한테 '서버 잡혔대' 하면 Postiz 깔아줄게."
-  python3 -c "import json,sys,urllib.request; d=json.dumps({'content':sys.argv[1]}).encode(); req=urllib.request.Request(sys.argv[2], data=d, headers={'Content-Type':'application/json'}); urllib.request.urlopen(req)" "$MSG" "$DISCORD_WEBHOOK" 2>/dev/null || true
+  python3 -c "import json,sys,urllib.request; d=json.dumps({'content':sys.argv[1]}).encode(); req=urllib.request.Request(sys.argv[2], data=d, headers={'Content-Type':'application/json','User-Agent':'Mozilla/5.0'}); urllib.request.urlopen(req)" "$MSG" "$DISCORD_WEBHOOK" 2>/dev/null || true
 fi
